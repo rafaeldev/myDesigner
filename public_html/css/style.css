@@ -1,0 +1,181 @@
+@font-face {
+    font-family: Domine;
+    src: url('fonts/Domine/Domine-Regular.ttf');
+}
+
+@font-face {
+    font-family: Fenix;
+    src: url('fonts/Fenix/Fenix-Regular.ttf');
+}
+
+@font-face {
+    font-family: PoiretOne;
+    src: url('fonts/Poiret_One/PoiretOne-Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('fonts/Roboto/Roboto-Regular.ttf');
+}
+
+* {
+    font-family: Domine;
+}
+
+body {
+    background-image: url('../image/back_image.png');
+}
+
+.name {
+    font-size: 11px;
+}
+
+.field {
+    margin: 2.5em 0;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+}
+
+div.paper {
+    margin-top: 1em;
+    padding: 0.5em 0.8em;
+    box-shadow: 0 0em 1.3em 0.1em rgb(133, 133, 133);
+    height: 90%;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+}
+
+.rhombus {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: rgb(53, 247, 106);
+    
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.rhombus:hover {
+    -webkit-transform: rotate(65deg);
+    -moz-transform: rotate(65deg);
+    -ms-transform: rotate(65deg);
+    -o-transform: rotate(65deg);
+    transform: rotate(65deg);
+    background-color: rgb(137, 90, 236);
+}
+
+.rhombus-container {
+    display: inline-block;
+    margin: 1.5em 0.7em;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    color: white;
+    font-family: Fenix;
+    font-size: x-large;
+}
+
+#copyright {
+    position: absolute;
+    bottom: 1em;
+    display: block;
+    font-size: x-small;
+}
+
+#copyright div {
+    text-align: center;
+    display: block;
+}
+
+.quart-moon {
+    width: 45px;
+    height: 45px;
+    left: 15px;
+    text-align: center;
+    line-height: 45px;
+    display: inline-block;
+    margin-right: -0.23em;
+    margin-top: -0.23em;
+    color: chartreuse;
+    
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+    -o-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.quart-moon:hover {
+    cursor: pointer;
+}
+
+.quart-moon-upper-left {
+    border-radius: 75px 0px 0px 0px;
+    background-color: rgb(255, 255, 0);
+}
+
+.quart-moon-upper-left:hover {
+    -webkit-transform: rotate3d(1, 1, 0, 180deg);
+    -moz-transform: rotate3d(1, 1, 0, 180deg);
+    -ms-transform: rotate3d(1, 1, 0, 180deg);
+    -o-transform: rotate3d(1, 1, 0, 180deg);
+    transform: rotate3d(1, 1, 0, 180deg);
+}
+
+.quart-moon-upper-right {
+    border-radius: 0px 75px 0px 0px;
+    background-color: rgb(75, 103, 161);
+}
+
+.quart-moon-upper-right:hover {
+    -webkit-transform: rotate3d(1, -1, 0, 180deg);
+    -moz-transform: rotate3d(1, -1, 0, 180deg);
+    -ms-transform: rotate3d(1, -1, 0, 180deg);
+    -o-transform: rotate3d(1, -1, 0, 180deg);
+    transform: rotate3d(1, -1, 0, 180deg);
+}
+
+.quart-moon-bottom-left {
+    border-radius: 0px 0px 0px 75px;
+    background-color: red;
+}
+
+.quart-moon-bottom-left:hover {
+    -webkit-transform: rotate3d(1, -1, 0, 180deg);
+    -moz-transform: rotate3d(1, -1, 0, 180deg);
+    -ms-transform: rotate3d(1, -1, 0, 180deg);
+    -o-transform: rotate3d(1, -1, 0, 180deg);
+    transform: rotate3d(1, -1, 0, 180deg);
+}
+
+.quart-moon-bottom-right {
+    border-radius: 0px 0px 75px 0px;
+    background-color: green;
+}
+
+.quart-moon-bottom-right:hover {
+    -webkit-transform: rotate3d(1, 1, 0, 180deg);
+    -moz-transform: rotate3d(1, 1, 0, 180deg);
+    -ms-transform: rotate3d(1, 1, 0, 180deg);
+    -o-transform: rotate3d(1, 1, 0, 180deg);
+    transform: rotate3d(1, 1, 0, 180deg);
+}
+
+.half-moon{
+    margin-bottom: 0.25em;
+}
+
+.moon {
+    margin: 8em;
+    position: fixed;
+}
