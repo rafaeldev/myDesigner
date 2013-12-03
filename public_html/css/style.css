@@ -87,7 +87,9 @@ div.paper {
 
 #copyright {
     position: absolute;
+    left: 0;
     bottom: 1em;
+    width: 100%;
     display: block;
     font-size: x-small;
 }
@@ -97,31 +99,40 @@ div.paper {
     display: block;
 }
 
+#test{
+    background: url('../image/mini_me.jpg') 0px 0px;
+    width: 150px;
+    height: 150px;
+}
+
 .quart-moon {
-    width: 45px;
-    height: 45px;
+    width: 75px;
+    height: 75px;
     left: 15px;
     text-align: center;
     line-height: 45px;
     display: inline-block;
-    margin-right: -0.23em;
-    margin-top: -0.23em;
+    margin-right: -0.15em;
     color: chartreuse;
     
-    -webkit-transition: all 0.7s;
-    -moz-transition: all 0.7s;
-    -ms-transition: all 0.7s;
-    -o-transition: all 0.7s;
-    transition: all 0.7s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    color: rgba(255, 255, 255, 0);
+    font-size: x-large;
 }
 
 .quart-moon:hover {
     cursor: pointer;
+    z-index: 1000;
+    color: rgba(255, 255, 255, 1);
 }
 
 .quart-moon-upper-left {
     border-radius: 75px 0px 0px 0px;
-    background-color: rgb(255, 255, 0);
+    background: url('../image/mini_me.jpg') 0 0;
 }
 
 .quart-moon-upper-left:hover {
@@ -130,11 +141,13 @@ div.paper {
     -ms-transform: rotate3d(1, 1, 0, 180deg);
     -o-transform: rotate3d(1, 1, 0, 180deg);
     transform: rotate3d(1, 1, 0, 180deg);
+    
+    background: rgb(21, 140, 219);
 }
 
 .quart-moon-upper-right {
     border-radius: 0px 75px 0px 0px;
-    background-color: rgb(75, 103, 161);
+    background: url('../image/mini_me.jpg') 75px 0;
 }
 
 .quart-moon-upper-right:hover {
@@ -143,11 +156,13 @@ div.paper {
     -ms-transform: rotate3d(1, -1, 0, 180deg);
     -o-transform: rotate3d(1, -1, 0, 180deg);
     transform: rotate3d(1, -1, 0, 180deg);
+    
+    background: blue;
 }
 
 .quart-moon-bottom-left {
     border-radius: 0px 0px 0px 75px;
-    background-color: red;
+    background: url('../image/mini_me.jpg') 0 75px;
 }
 
 .quart-moon-bottom-left:hover {
@@ -156,11 +171,13 @@ div.paper {
     -ms-transform: rotate3d(1, -1, 0, 180deg);
     -o-transform: rotate3d(1, -1, 0, 180deg);
     transform: rotate3d(1, -1, 0, 180deg);
+    
+    background: red;
 }
 
 .quart-moon-bottom-right {
     border-radius: 0px 0px 75px 0px;
-    background-color: green;
+    background: url('../image/mini_me.jpg') 75px 75px;
 }
 
 .quart-moon-bottom-right:hover {
@@ -169,13 +186,14 @@ div.paper {
     -ms-transform: rotate3d(1, 1, 0, 180deg);
     -o-transform: rotate3d(1, 1, 0, 180deg);
     transform: rotate3d(1, 1, 0, 180deg);
+    
+    background: green;
 }
 
 .half-moon{
-    margin-bottom: 0.25em;
+    /* ... */
 }
 
 .moon {
-    margin: 8em;
-    position: fixed;
+    display: inline-block;
 }
