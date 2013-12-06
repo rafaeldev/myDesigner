@@ -40,7 +40,6 @@ div.paper {
     margin-top: 1em;
     padding: 0.5em 0.8em;
     box-shadow: 0 0em 1.3em 0.1em rgb(133, 133, 133);
-    height: 90%;
     position: absolute;
     background-color: rgb(255, 255, 255);
 }
@@ -99,22 +98,17 @@ div.paper {
     display: block;
 }
 
-#test{
-    background: url('../image/mini_me.jpg') 0px 0px;
-    width: 150px;
-    height: 150px;
-}
-
 .quart-moon > div {
     display: inline-block;
 }
 
 .quart-moon {
     width: 75px;
-    height: 75px;
+    height: 50px;
+    padding-top: 25px; /* Esse padding é complementar ao height */
     left: 15px;
     text-align: center;
-    vertical-align: central;
+    vertical-align: top;
     display: inline-block;
     margin-right: -0.15em;
     

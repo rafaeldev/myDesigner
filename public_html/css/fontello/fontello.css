@@ -66,7 +66,7 @@
     vertical-align: central;
 }
 
-.icon-gplus:before, .icon-facebook:before{
+.icon-gplus:before, .icon-facebook:before {
     -webkit-transform: rotate3d(1, -1, 0, -180deg);
     -moz-transform: rotate3d(1, -1, 0, -180deg);
     -ms-transform: rotate3d(1, -1, 0, -180deg);
