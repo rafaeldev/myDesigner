@@ -198,4 +198,34 @@ div.paper {
 
 .moon {
     display: inline-block;
+    float: right;
+}
+
+#aboutAuthor {
+    margin-left: 4em;
+    color: white;
+    text-justify: auto;
+    width: 380px;
+}
+
+#author {
+    height: 150px;
+    background-color: rgb(110, 120, 130);
+    border-radius: 75px;
+    display: inline-flex;
+    text-align: center;
+}
+
+#author > div {
+    display: inline-block;
+}
+
+.destak {
+    color: rgb(53, 247, 106);
+}
+
+#authorContainer {
+    position: absolute;
+    bottom: 3em;
+    width: 100%;
 }
