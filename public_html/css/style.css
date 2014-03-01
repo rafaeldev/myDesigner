@@ -133,7 +133,7 @@ div.paper {
 }
 
 .quart-moon-action {
-    display: inline-block;
+    display: inline-flex;
     z-index: 1001;
 }
 
@@ -150,6 +150,7 @@ div.paper {
 .quart-moon-upper-right {
     border-radius: 0px 75px 0px 0px;
     background: url('../image/mini_me.jpg') 75px 0;
+    margin: -1px;
 }
 
 .quart-moon-action:hover > .quart-moon-upper-right {
@@ -180,6 +181,7 @@ div.paper {
 .quart-moon-bottom-right {
     border-radius: 0px 0px 75px 0px;
     background: url('../image/mini_me.jpg') 75px 75px;
+    margin: -1px;
 }
 
 .quart-moon-action:hover > .quart-moon-bottom-right {
