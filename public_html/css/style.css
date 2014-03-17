@@ -26,10 +26,6 @@ body {
     background-image: url('../image/back_image.png');
 }
 
-.name {
-    font-size: 11px;
-}
-
 .field {
     margin: 2.5em 0;
     letter-spacing: 0.2em;
@@ -48,36 +44,20 @@ div.paper {
     width: 90px;
     height: 90px;
     margin: auto;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
     background-color: rgb(53, 247, 106);
 
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -ms-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
 
 .rhombus:hover {
-    -webkit-transform: rotate(65deg);
-    -moz-transform: rotate(65deg);
-    -ms-transform: rotate(65deg);
-    -o-transform: rotate(65deg);
-    transform: rotate(65deg);
+    transform: rotate(55deg);
     background-color: rgb(137, 90, 236);
 }
 
 .rhombus-container {
     display: inline-block;
     margin: 1.5em 0.7em;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
     color: white;
     font-family: Fenix;
@@ -112,10 +92,6 @@ div.paper {
     display: inline-block;
     margin-right: -0.15em;
 
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    -o-transition: all 1s;
     transition: all 1s;
     color: rgba(255, 255, 255, 0);
     font-size: x-large;
@@ -138,10 +114,6 @@ div.paper {
 }
 
 .quart-moon-action:hover > .quart-moon-upper-left {
-    -webkit-transform: rotate3d(1, 1, 0, 180deg);
-    -moz-transform: rotate3d(1, 1, 0, 180deg);
-    -ms-transform: rotate3d(1, 1, 0, 180deg);
-    -o-transform: rotate3d(1, 1, 0, 180deg);
     transform: rotate3d(1, 1, 0, 180deg);
 
     background: rgb(21, 140, 219);
@@ -154,10 +126,6 @@ div.paper {
 }
 
 .quart-moon-action:hover > .quart-moon-upper-right {
-    -webkit-transform: rotate3d(1, -1, 0, 180deg);
-    -moz-transform: rotate3d(1, -1, 0, 180deg);
-    -ms-transform: rotate3d(1, -1, 0, 180deg);
-    -o-transform: rotate3d(1, -1, 0, 180deg);
     transform: rotate3d(1, -1, 0, 180deg);
 
     background: blue;
@@ -169,10 +137,6 @@ div.paper {
 }
 
 .quart-moon-action:hover > .quart-moon-bottom-left {
-    -webkit-transform: rotate3d(1, -1, 0, 180deg);
-    -moz-transform: rotate3d(1, -1, 0, 180deg);
-    -ms-transform: rotate3d(1, -1, 0, 180deg);
-    -o-transform: rotate3d(1, -1, 0, 180deg);
     transform: rotate3d(1, -1, 0, 180deg);
 
     background: red;
@@ -185,10 +149,6 @@ div.paper {
 }
 
 .quart-moon-action:hover > .quart-moon-bottom-right {
-    -webkit-transform: rotate3d(1, 1, 0, 180deg);
-    -moz-transform: rotate3d(1, 1, 0, 180deg);
-    -ms-transform: rotate3d(1, 1, 0, 180deg);
-    -o-transform: rotate3d(1, 1, 0, 180deg);
     transform: rotate3d(1, 1, 0, 180deg);
 
     background: green;
@@ -203,6 +163,27 @@ div.paper {
     float: right;
 }
 
+#author {
+    background-color: rgb(110, 120, 130);
+    border-radius: 75px;
+    text-align: center;
+    margin: 0 auto;
+    height: 150px;
+    width: 70%;
+    min-width: 600px;
+}
+
+#author > div {
+    display: inline-block;
+}
+
+#authorContainer {
+    position: absolute;
+    bottom: 3em;
+    left: 0;
+    width: 100%;
+}
+
 #aboutAuthor {
     margin-left: 4em;
     color: white;
@@ -210,24 +191,39 @@ div.paper {
     width: 380px;
 }
 
-#author {
-    height: 150px;
-    background-color: rgb(110, 120, 130);
-    border-radius: 75px;
-    display: inline-flex;
-    text-align: center;
+#aboutAuthor > .name {
+    /*font-size: 11px;*/
 }
 
-#author > div {
-    display: inline-block;
+#aboutAuthor > .description {
+    font-size: 12px;
 }
 
 .destak {
     color: rgb(53, 247, 106);
+    font-size: 13px;
+    bottom: 0;
 }
 
-#authorContainer {
-    position: absolute;
-    bottom: 3em;
-    width: 100%;
+div.links {
+    margin-top: .7em;
+}
+
+a.link {
+    color: rgb(255, 255, 255);
+    padding: .3em;
+}
+
+a.link:nth-child(2n) {
+    background-color: rgb(137, 90, 236);
+}
+a.link:nth-child(2n+1) {
+    background-color: rgb(53, 247, 106);
+}
+
+a.link:hover:nth-child(2n) {
+    background-color: rgb(53, 247, 106);
+}
+a.link:hover:nth-child(2n+1) {
+    background-color: rgb(137, 90, 236);
 }

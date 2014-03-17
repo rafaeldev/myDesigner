@@ -19,15 +19,19 @@ body {
     margin: 100px auto;
 
     /*Lets add a shadow*/
-    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
+    /*box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);*/
 }
 
 
 /*Last thing remaining is to add transitions*/
 .slider > img {
     position: absolute;
-    left: 0; top: 0;
+    left: 0; 
+    top: 0;
     transition: all 0.5s;
+    
+    width: 250px;
+    margin: 0 auto;
 }
 
 .slider input[name='slide_switch'] {
@@ -52,7 +56,7 @@ body {
 }
 
 /*Time to add the click effects*/
-.slider input[name='slide_switch']:checked+label {
+.slider input[name='slide_switch']:checked + label {
     border-color: #666;
     opacity: 1;
 }
@@ -65,7 +69,7 @@ body {
 /*That hides all main images at a 110% size
 On click the images will be displayed at normal size to complete the effect
 */
-.slider input[name='slide_switch']:checked+label+img {
+.slider input[name='slide_switch']:checked + label + img {
     opacity: 1;
     transform: scale(1);
 }
