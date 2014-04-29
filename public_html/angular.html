@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>AngularJS - Tableless</title>
+        <link href="css/style.css" rel="stylesheet" />
+        
+        <style>
+            textarea {
+                resize: none;
+                width: 30em;
+                height: 6em;
+            }
+            
+            #generate {
+                position: relative;
+            }
+            
+            #texts {
+                /*background-color: white;*/
+            }
+            
+            #texts > p:nth-child(n+2) {
+                margin: 0;
+                padding: .2em;
+                border-bottom: solid lightskyblue .1em;
+                border-left: solid red .1em;
+                background-color: white;
+                width: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h4>Criando textos</h4>
+        <p>Escreva o seu texto aqui</p>
+        <textarea type="text" id="textDigited" ng-model="text"></textarea>
+        <a id="generate">Slide</a>
+        
+        <div id="texts">
+            <p>{{ text }}</p>
+        </div>
+    </body>
+    
+    <script src="js/libs/angular.js"></script>
+    <script>
+        function generateText(){
+            var newParagraph = document.createElement("p"),
+                textDigited = document.getElementById("textDigited").value,
+                texts = document.getElementById("texts"),
+                splitText,
+                textLength;
+        
+            if (textDigited === "") {
+                return false;
+            }
+        
+            document.getElementById("textDigited").value = "";
+            
+            textLength = textDigited.length;
+            if (textLength > 40) {
+                splitText = textDigited.replaceAll("\\s+", " ").split(" ");
+                
+                for (var i = 0; i < textLength; i++) {
+                    
+                }
+            } else {
+                newParagraph.textContent = textDigited;
+                texts.appendChild(newParagraph);
+                texts.firstElementChild.textContent = "";
+            }
+            
+        }
+        
+        document.getElementById("generate").onclick = function() {
+            generateText();
+        };
+    </script>
+</html>

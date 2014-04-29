@@ -212,6 +212,8 @@ div.links {
 a.link {
     color: rgb(255, 255, 255);
     padding: .3em;
+    
+     transition: all .5s ease-in-out;
 }
 
 a.link:nth-child(2n) {

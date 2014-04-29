@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            html, body, center {
+                padding: 0;
+                margin: 0;
+            }
+
+            footer {
+                position: relative;
+                bottom: -10em;
+            }
+            
+            #speak {
+                padding: .4em;
+            }
+
+            #speak:hover {
+                cursor: pointer;
+                background-color: #000000;
+                color: #FFFFFF;
+            }
+            
+            #error {
+                display: none;
+                width: 100%;
+                height: 100%;
+                z-index: 1000;
+                color: #FF0000;
+                background-color: #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <div>
+                <h2>Teste de TTS (Text to Speech)</h2>
+                <div>
+                    <select id="language">
+                        <option value="pt">Português</option>
+                        <option value="en">Inglês</option>
+                    </select>
+                    <input type="text" id="text" name="text">
+                    <a id="speak">FALAR!</a>
+
+                    <!--<audio hidden="true" id="audio" src=""  rel="noreferrer"></audio>-->
+                </div>
+            </div>
+            <div id="error">
+                Sorry, the google-tts script couldn't be loaded.
+            </div>
+            <p><strong>Player: </strong><span id="tts_player"></span></p>
+        </center>
+    </body>
+    <footer>
+        <center>
+            &copy; Copyrights | All rights reserved to <span style="color: rgb(137, 90, 236);">LE</span><span style="color: rgb(53, 247, 106);">RA</span> LTDA.
+        </center>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="js/libs/jquery.js"></script>
+    <script type="text/javascript" src="js/libs/google-tts.js"></script>
+    <!--<script type="text/javascript" src="https://rawgithub.com/hiddentao/google-tts/master/google-tts.min.js"></script>-->
+    <script type="text/javascript" src="js/libs/soundManager2.js"></script>
+    <script>
+        $(document).ready(function(){
+            soundManager.setup({
+                url: '/',
+                preferFlash: false,
+                onready: function() {
+                    if (!window.GoogleTTS) {
+                        $("#error").show();
+                        return;
+                    }
+
+                    var googleTTS = new window.GoogleTTS();
+
+                    // play
+                    $("#speak").click(function() {
+                        var text = $("#text").val(),
+                            language = $("#language").val();
+
+                        if (text.trim() === "") {
+                            return false;
+                        }
+
+                        googleTTS.play(text, language, function(err) {
+                            if (err) {
+                              $("#error").text(err.toString());
+                            }
+
+                            console.log('Finished playing');
+                        });
+                    });
+
+                    // available player
+                    googleTTS.getPlayer(function (err, player) {
+                        if (err) {
+                            return $("#error").text(err.toString());
+                        }
+
+                        if (player) {
+                            $("#tts_player").text(player.toString());
+                        } else {
+                            $("#tts_player").text('None available');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</html>
