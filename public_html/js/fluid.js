@@ -1,15 +1,15 @@
 function adjustVisualInit(){
-    var winW = window.innerWidth;
-    var winH = window.innerHeight;
-    
-    var paper = document.getElementsByClassName('paper')[0];
-    var author = document.getElementById('author');
-    
+    var winW = window.innerWidth,
+        paper = document.getElementsByClassName('paper')[0],
+        author = document.getElementById('author');
+
+    //var winH = window.innerHeight;
+        
     //Largura do "papel"
     paper.style.width = ((winW - 90) < 850 ? (winW - 90) : 850)+ "px";
     
     //Altura do "papel"
-    paper.style.minHeight = (winH - 90) + "px";
+    //paper.style.minHeight = (winH - 90) + "px";
     
     //Margem à esquerda
     paper.style.left = ((winW / 2) - (paper.offsetWidth / 2)) + "px";

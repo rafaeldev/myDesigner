@@ -163,6 +163,13 @@ div.paper {
     float: right;
 }
 
+#authorContainer {
+    position: relative;
+    margin: 1.5em;
+    left: 0;
+    width: 100%;
+}
+
 #author {
     background-color: rgb(110, 120, 130);
     border-radius: 75px;
@@ -177,15 +184,8 @@ div.paper {
     display: inline-block;
 }
 
-#authorContainer {
-    position: absolute;
-    bottom: 3em;
-    left: 0;
-    width: 100%;
-}
-
 #aboutAuthor {
-    margin-left: 4em;
+    margin-left: 2em;
     color: white;
     text-justify: auto;
     width: 380px;
@@ -212,8 +212,7 @@ div.links {
 a.link {
     color: rgb(255, 255, 255);
     padding: .3em;
-    
-     transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 a.link:nth-child(2n) {
