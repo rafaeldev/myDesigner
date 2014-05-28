@@ -38,6 +38,7 @@ div.paper {
     box-shadow: 0 0em 1.3em 0.1em rgb(133, 133, 133);
     position: absolute;
     background-color: rgb(255, 255, 255);
+    min-height: 95%;
 }
 
 .rhombus {
@@ -64,18 +65,28 @@ div.paper {
     font-size: x-large;
 }
 
-#copyright {
-    position: absolute;
-    left: 0;
-    bottom: 1em;
-    width: 100%;
-    display: block;
-    font-size: x-small;
+div.links {
+    margin-top: .7em;
 }
 
-#copyright div {
-    text-align: center;
-    display: block;
+a.link {
+    color: rgb(255, 255, 255);
+    padding: .3em;
+    transition: all .5s ease-in-out;
+}
+
+a.link:nth-child(2n) {
+    background-color: rgb(137, 90, 236);
+}
+a.link:nth-child(2n+1) {
+    background-color: rgb(53, 247, 106);
+}
+
+a.link:hover:nth-child(2n) {
+    background-color: rgb(53, 247, 106);
+}
+a.link:hover:nth-child(2n+1) {
+    background-color: rgb(137, 90, 236);
 }
 
 .quart-moon > div {
@@ -109,7 +120,7 @@ div.paper {
 }
 
 .quart-moon-action {
-    display: inline-flex;
+    display: inline-block;
     z-index: 1001;
 }
 
@@ -155,7 +166,7 @@ div.paper {
 }
 
 .half-moon{
-    /* ... */
+    display: black;
 }
 
 .moon {
@@ -164,9 +175,10 @@ div.paper {
 }
 
 #authorContainer {
-    position: relative;
-    margin: 1.5em;
+    position: absolute;
+    margin: 1.3em;
     left: 0;
+    bottom: .2em;
     width: 100%;
 }
 
@@ -186,9 +198,10 @@ div.paper {
 
 #aboutAuthor {
     margin-left: 2em;
+    bottom: 1.5em;
+    width: 380px;
     color: white;
     text-justify: auto;
-    width: 380px;
 }
 
 #aboutAuthor > .name {
@@ -205,26 +218,16 @@ div.paper {
     bottom: 0;
 }
 
-div.links {
-    margin-top: .7em;
+#copyright {
+    position: absolute;
+    left: 0;
+    bottom: 1em;
+    width: 100%;
+    display: block;
+    font-size: x-small;
 }
 
-a.link {
-    color: rgb(255, 255, 255);
-    padding: .3em;
-    transition: all .5s ease-in-out;
-}
-
-a.link:nth-child(2n) {
-    background-color: rgb(137, 90, 236);
-}
-a.link:nth-child(2n+1) {
-    background-color: rgb(53, 247, 106);
-}
-
-a.link:hover:nth-child(2n) {
-    background-color: rgb(53, 247, 106);
-}
-a.link:hover:nth-child(2n+1) {
-    background-color: rgb(137, 90, 236);
+#copyright div {
+    text-align: center;
+    display: block;
 }
