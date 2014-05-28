@@ -4,27 +4,11 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="js/libs/jquery.js" type="text/javascript"></script>
+        <!--<script src="js/libs/jquery_2.0.3.js" type="text/javascript"></script>-->
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="js/libs/jplayer/jquery.jplayer.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-//            $(document).ready(function() {
-//                $("#jquery_jplayer_1").jPlayer({
-//                    ready: function() {
-//                        $(this).jPlayer("setMedia", {
-//                            title: "Big Buck Bunny Trailer",
-//                            m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
-//                            ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
-//                            poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
-//                        });
-//                    },
-//                    swfPath: "/js/libs/jplayer/",
-//                    supplied: "m4v, ogv"
-//                });
-//            });
-
-
             $(document).ready(function() {
-
                 $("#jquery_jplayer_1").jPlayer({
                     ready: function() {
                         $(this).jPlayer("setMedia", {
@@ -32,7 +16,6 @@
                             m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
                             ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
                             webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
-                            //m4v: "rtsp://54.207.74.216:1935/mediaportal/30_TELEAULA_1_FINAL.mp4",
                             poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
                         });
                     },
@@ -53,5 +36,9 @@
     </head>
     <body>
         <div id="jquery_jplayer_1"></div>
+        <div id="jp_container_1">
+            <a href="#" class="jp-play">Play</a>
+            <a href="#" class="jp-pause">Pause</a>
+        </div>
     </body>
 </html>

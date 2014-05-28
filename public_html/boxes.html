@@ -52,8 +52,12 @@ and open the template in the editor.
                 background-color: #000099;
                 z-index: 1000;
             }
+            
+            div.close {
+                background-color: #000077;
+            }
         </style>
-        <script src="js/libs/jquery.js" type="text/javascript"></script>
+        <script src="js/libs/jquery_2.0.3.js" type="text/javascript"></script>
         <script src="js/libs/jquery-ui.js" type="text/javascript"></script>
     </head>
     <body>
@@ -69,69 +73,69 @@ and open the template in the editor.
                 <input type="radio" name="designMode" value="triangle"> Triangle
             </div>
         </div>
+        <script>
+            var FIRST_X,
+                FIRST_Y;
+
+            $('#blackboard').on('click', function(evt) {
+                var className = undefined,
+                    design = undefined;
+
+                if (FIRST_X && FIRST_Y) {
+                    FIRST_X = undefined;
+                    FIRST_Y = undefined;
+
+                    $('#new').removeAttr("id").draggable().addClass("close");
+
+                    return false;
+                }
+
+                FIRST_X = evt.pageX;
+                FIRST_Y = evt.pageY;
+
+                design = $('<div></div>', {
+                                        'id': "new",
+                                        'class': "chalk"
+                                    }).css({
+                                        'top': FIRST_Y, 
+                                        'left': FIRST_X
+                                    });
+
+                switch($('input[name="designMode"]:checked').val()) {
+                    case "square":
+                        className = "square";
+                        break;
+                    case "circle":
+                        className = "circle";
+                        break;
+                    case "triangle":
+                        className = "triangle";
+                        break;
+                }
+
+                design.addClass(className);
+
+                $(this).append(design)
+
+            });
+
+            $('#blackboard').on('mousemove', function(evt) {
+                if (FIRST_X && FIRST_Y) {
+                    $('#new').css({
+                                'width': evt.pageX - FIRST_X, 
+                                'height': evt.pageY - FIRST_Y
+                               });
+                }
+            });
+
+            $(document).on('keydown', function(evt) {
+                var key = evt.keyCode;
+                if (key == 27) {
+                    $('#new').remove();
+                    FIRST_X = undefined;
+                    FIRST_Y = undefined;
+                }
+            });
+        </script>
     </body>
-    <script>
-        var FIRST_X,
-            FIRST_Y;
-        
-        $('#blackboard').on('click', function(evt) {
-            var className = undefined,
-                design = undefined;
-        
-            if (FIRST_X && FIRST_Y) {
-                FIRST_X = undefined;
-                FIRST_Y = undefined;
-                
-                $('#new').removeAttr("id").draggable();
-                
-                return false;
-            }
-            
-            FIRST_X = evt.pageX;
-            FIRST_Y = evt.pageY;
-            
-            design = $('<div></div>', {
-                                    'id': "new",
-                                    'class': "chalk"
-                                }).css({
-                                    'top': FIRST_Y, 
-                                    'left': FIRST_X
-                                });
-            
-            switch($('input[name="designMode"]:checked').val()) {
-                case "square":
-                    className = "square";
-                    break;
-                case "circle":
-                    className = "circle";
-                    break;
-                case "triangle":
-                    className = "triangle";
-                    break;
-            }
-            
-            design.addClass(className);
-            
-            $(this).append(design)
-                            
-        });
-        
-        $('#blackboard').on('mousemove', function(evt) {
-            if (FIRST_X && FIRST_Y) {
-                $('#new').css({
-                            'width': evt.pageX - FIRST_X, 
-                            'height': evt.pageY - FIRST_Y
-                           });
-            }
-        });
-        
-        $(document).on('keydown', function(evt) {
-            var key = evt.keyCode;
-            if (key == 27) {
-                $('#new').remove();
-                FIRST_X = undefined;
-                FIRST_Y = undefined;
-            }
-        });
-    </script>
 </html>
