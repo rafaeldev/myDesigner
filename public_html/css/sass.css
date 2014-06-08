@@ -1,0 +1,85 @@
+/*
+    Examples Site
+*/
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0; }
+
+html {
+  position: relative;
+  height: 100%;
+  padding: 0 .3em;
+  position: fixed; }
+  html:before, html:after {
+    position: absolute;
+    content: '';
+    height: 1em;
+    top: 0;
+    left: 0;
+    right: 0; }
+  html:after {
+    top: auto;
+    bottom: 0; }
+  html:before {
+    background: linear-gradient(90deg, #1abc9c 20.17778%, #2ecc71 20.17778%, #2ecc71 27.10648%, #3498db 27.10648%, #3498db 38.30515%, #9b59b6 38.30515%, #9b59b6 33.96076%, #34495e 33.96076%, #34495e 56.40166%, #f1c40f 56.40166%, #f1c40f 52.50524%, #e67e22 52.50524%, #e67e22 63.22941%, #e74c3c 63.22941%, #e74c3c 72.97086%, #ecf0f1 72.97086%, #ecf0f1 95.73362%, #95a5a6 95.73362%); }
+  html:after {
+    background: linear-gradient(90deg, #1abc9c 10%, #2ecc71 10%, #2ecc71 12.5%, #3498db 12.5%, #3498db 28%, #9b59b6 28%, #9b59b6 35%, #34495e 35%, #34495e 60%, #f1c40f 60%, #f1c40f 69%, #e67e22 69%, #e67e22 83%, #e74c3c 83%, #e74c3c 88%, #ecf0f1 88%, #ecf0f1 96%, #95a5a6 96%); }
+
+.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid black; }
+
+.message, .success, .error, .warning {
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+  transition: all .3s linear; }
+  .message:hover, .success:hover, .error:hover, .warning:hover {
+    color: #FFF;
+    cursor: pointer;
+    background-color: #8c8c8c; }
+
+.success {
+  border-color: green; }
+
+.error {
+  border-color: red; }
+
+.warning {
+  border-color: yellow; }
+
+#buttons, #container {
+  display: block;
+  float: left; }
+
+#container {
+  width: 100%;
+  overflow: auto; }
+
+h1 {
+  color: #ff00bb; }
+
+article[role="main"] {
+  float: left;
+  width: 62.5%; }
+
+aside[role="complimentary"] {
+  float: right;
+  width: 31.25%;
+  border: solid 1px;
+  border-color: #FF137C;
+  padding: 1em; }
+  aside[role="complimentary"] > ul > li {
+    list-style: none;
+    margin-left: 1em; }
+  aside[role="complimentary"] a {
+    text-decoration: none; }
+
+/*# sourceMappingURL=sass.css.map */
