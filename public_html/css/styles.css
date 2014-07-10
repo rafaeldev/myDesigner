@@ -298,3 +298,11 @@ p + p {
 .paper strong:nth-child(odd) {
     color: #895AEC;
 }
+
+#main-text a {
+    color: #E9BE15;
+}
+
+#main-text a:visited {
+    text-decoration: none;
+}

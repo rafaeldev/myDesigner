@@ -1,14 +1,16 @@
 /*
     Examples Site
 */
-body,
-ul,
-ol {
+body {
   margin: 0;
   padding: 0; }
 
+ul,
+ol {
+  list-style: none; }
+
 html {
-  position: relative;
+  position: absolute;
   height: 100%;
   padding: 0 .3em;
   position: fixed; }
@@ -23,7 +25,7 @@ html {
     top: auto;
     bottom: 0; }
   html:before {
-    background: linear-gradient(90deg, #1abc9c 20.17778%, #2ecc71 20.17778%, #2ecc71 27.10648%, #3498db 27.10648%, #3498db 38.30515%, #9b59b6 38.30515%, #9b59b6 33.96076%, #34495e 33.96076%, #34495e 56.40166%, #f1c40f 56.40166%, #f1c40f 52.50524%, #e67e22 52.50524%, #e67e22 63.22941%, #e74c3c 63.22941%, #e74c3c 72.97086%, #ecf0f1 72.97086%, #ecf0f1 95.73362%, #95a5a6 95.73362%); }
+    background: linear-gradient(90deg, #1abc9c 3.97363%, #2ecc71 3.97363%, #2ecc71 28.31785%, #3498db 28.31785%, #3498db 37.47681%, #9b59b6 37.47681%, #9b59b6 49.79567%, #34495e 49.79567%, #34495e 43.61677%, #f1c40f 43.61677%, #f1c40f 67.84429%, #e67e22 67.84429%, #e67e22 64.51619%, #e74c3c 64.51619%, #e74c3c 74.80456%, #ecf0f1 74.80456%, #ecf0f1 81.10911%, #95a5a6 81.10911%); }
   html:after {
     background: linear-gradient(90deg, #1abc9c 10%, #2ecc71 10%, #2ecc71 12.5%, #3498db 12.5%, #3498db 28%, #9b59b6 28%, #9b59b6 35%, #34495e 35%, #34495e 60%, #f1c40f 60%, #f1c40f 69%, #e67e22 69%, #e67e22 83%, #e74c3c 83%, #e74c3c 88%, #ecf0f1 88%, #ecf0f1 96%, #95a5a6 96%); }
 
@@ -55,13 +57,14 @@ html {
 .warning {
   border-color: yellow; }
 
-#buttons, #container {
+#buttons, #container, #subMain {
   display: block;
   float: left; }
 
 #container {
   width: 100%;
-  overflow: auto; }
+  height: 100%;
+  overflow-y: scroll; }
 
 h1 {
   color: #ff00bb; }
