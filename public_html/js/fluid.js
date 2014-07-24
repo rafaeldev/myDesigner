@@ -1,27 +1,10 @@
 function adjustVisualInit() {
-    var winW = window.innerWidth,
-        winH = window.innerHeight,
-        paper = document.getElementsByClassName('paper')[0];
-
-    //var winH = window.innerHeight;
-        
-    //Largura do "papel"
-    paper.style.width = ((winW - 90) < 850 ? (winW - 90) : 850)+ "px";
+    var paper = document.getElementsByClassName('paper')[0],
+        winH = window.innerHeight;
     
-    //Altura do "papel"
-    //paper.style.minHeight = (winH - 90) + "px";
-    
-    //Margem à esquerda
-    paper.style.left = ((winW / 2) - (paper.offsetWidth / 2)) + "px";
     paper.style.minHeight = winH  + "px";
     
-    if (winW < 700) {
-        document.getElementById('authorContainerBig').style.display = "none";
-        document.getElementById('authorContainerSmall').style.display = "block";
-    } else {
-        document.getElementById('authorContainerBig').style.display = "block";
-        document.getElementById('authorContainerSmall').style.display = "none";
-    }
+    adjustVisual();
 }
 
 function adjustVisual() {
@@ -30,11 +13,15 @@ function adjustVisual() {
         authorContainerBig = document.getElementById('authorContainerBig'),
         authorContainerSmall = document.getElementById('authorContainerSmall');
     
-    //Largura do "papel"
-    paper.style.width = ((winW - 90) < 850 ? (winW - 90) : 850)+ "px";
-    
-    //Margem à esquerda
-    paper.style.left = ((winW / 2) - (paper.offsetWidth / 2)) + "px";
+    if (winW > 380) {
+        paper.style.width = ((winW - 90) < 850 ? (winW - 90) : 850)+ "px";
+        paper.style.left = ((winW / 2) - (paper.offsetWidth / 2)) + "px";
+        paper.className = "paper";
+    } else {
+        paper.style.width = "100%";
+        paper.style.left = 0;
+        addClass(paper, "mobile");
+    }
     
     if (winW < 700) {
         authorContainerBig.style.display = "none";
@@ -42,5 +29,11 @@ function adjustVisual() {
     } else {
         authorContainerBig.style.display = "block";
         authorContainerSmall.style.display = "none";
+    }
+}
+
+function addClass(E, className) {
+    if (E.className.indexOf(className) === -1) {
+        E.className = E.className + " " + className;
     }
 }

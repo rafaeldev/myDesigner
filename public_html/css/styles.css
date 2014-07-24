@@ -92,10 +92,12 @@ div.links {
 
 a.link {
     display: inline-block;
-    color: rgb(255, 255, 255);
+    color: #ed9c28;
     padding: .3em;
     margin: .3em 0;
     transition: all .5s ease-in-out;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 a.link:nth-child(2n) {
@@ -241,9 +243,11 @@ a.link:hover:nth-child(2n+1) {
     padding: .3em 0;
 }
 
-#authorContainerSmall .links > a {
+#authorContainerSmall .links > a,
+.mobile .links > a {
     display: block;
     margin: 0;
+    height: 1.5em;
 }
 
 .aboutAuthor > .description {
