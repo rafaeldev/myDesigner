@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/libs/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/libs/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <style>
+            #container {
+                margin-left: 5em;
+            }
+
+            #progressBar {
+                position: relative;
+                width: 500px;
+
+                -webkit-transition: all linear .5s;
+                -moz-transition: all linear .5s;
+                -ms-transition: all linear .5s;
+                transition: all linear .5s;
+            }
+
+            #seek {
+                left: 0;
+                width: 2px;
+                height: 100%;
+                background: #000;
+                visibility: hidden;
+                opacity: 0;
+
+                -webkit-transition: all linear .5s;
+                -moz-transition: all linear .5s;
+                -ms-transition: all linear .5s;
+                transition: all linear .5s;
+            }
+
+            #progressBar:hover #seek {
+                visibility: visible;
+                opacity: 1;
+                background: #F00;
+            }
+
+            #seek:hover {
+                background: #0F0;
+            }
+
+            .hideButton {
+                visibility: hidden;
+                opacity: 0;
+
+                -webkit-transition: all linear .5s;
+                -moz-transition: all linear .5s;
+                -ms-transition: all linear .5s;
+                transition: all linear .5s;
+            }
+
+            #jquery_jplayer_1 video {
+                z-index: 10;
+            }
+
+            #jquery_jplayer_1 video:hover .hideButton {
+                visibility: visible;
+                opacity: 1;
+
+                -webkit-transition: all linear .5s;
+                -moz-transition: all linear .5s;
+                -ms-transition: all linear .5s;
+                transition: all linear .5s;
+            }
+        </style>
+        <script src="js/libs/jquery_2.0.3.js" type="text/javascript"></script>
+        <script src="js/libs/jplayer/jquery.jplayer.min.js" type="text/javascript"></script>
+        <script src="js/libs/bootstrap.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var _ABSOLUTE_TIME = undefined,
+                    _RELATIVE_TIME = undefined,
+                    _DURATION = undefined,
+                    _SECONDS_PER_PIXEL = undefined,
+                    _PROGRESS_PERCENT = undefined,
+                    _PLAYER = undefined,
+                    _PROGRESS_BAR_WIDTH = undefined;
+
+            $(document).ready(function() {
+                $("#jquery_jplayer_1").jPlayer({
+                    ready: function() {
+                        $(this).jPlayer("setMedia", {
+                            title: "Big Buck Bunny",
+                            m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+                            ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+                            webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
+                            poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+                        });
+                    },
+                    loadeddata: function() {
+                        window.console.log("LOAD");
+
+                        var $jPlayerContainer = $(this);
+
+                        _PLAYER = $jPlayerContainer.data("jPlayer");
+
+                        _ABSOLUTE_TIME = parseFloat(_PLAYER.status.currentPercentAbsolute).toFixed(2);
+                        _RELATIVE_TIME = parseFloat(_PLAYER.status.currentPercentRelative).toFixed(2);
+                        _DURATION = parseFloat(_PLAYER.status.duration).toFixed(2);
+                        _PROGRESS_BAR_WIDTH = $('#progressBar').width();
+
+                        _PROGRESS_PERCENT = (100 * _DURATION) / _PROGRESS_BAR_WIDTH;
+                    },
+                    playing: function() {
+                        window.console.log("Playing");
+
+                        $('#progressBar').removeClass("progress-striped active");
+                    },
+                    waiting: function() {
+                        window.console.log("Waiting");
+
+                        $('#progressBar').addClass("progress-striped active");
+                    },
+                    play: function() {
+                        window.console.log("Play");
+
+                        $('#jp_container_1')
+                                .children('button')
+                                .addClass("hideButton");
+
+                        $('#progressBar').removeClass("progress-striped active");
+                    },
+                    pause: function() {
+                        window.console.log("Pause");
+
+                        $('#jp_container_1')
+                                .children('button')
+                                .removeClass("hideButton");
+
+                        $('#progressBar').addClass("progress-striped active");
+                    },
+                    timeupdate: function() {
+                        if (_PLAYER) {
+                            calculeMedisions();
+                        }
+                    },
+                    ended: function() {
+                        resetPlayer();
+                    },
+                    swfPath: "js/libs/jplayer/",
+                    supplied: "webmv, ogv, m4v",
+                    smoothPlayBar: true,
+                    keyEnabled: true,
+                    remainingDuration: true,
+                    toggleDuration: true
+                }).on('click', function() {
+                    console.log("Enter");
+
+                    var $jPlayerContainer = $(this),
+                            player = $jPlayerContainer.data("jPlayer");
+
+                    if (player.status.paused === false) {
+                        player.pause();
+                    } else {
+                        player.play();
+                    }
+                });
+
+                $('#progressBar')
+                        .on('click', function(e) {
+                            jumpTime(e.pageX - document.getElementById("progressBarContent").getBoundingClientRect().left);
+                            //window.console.log(e.pageX - document.getElementById("progressBarContent").getBoundingClientRect().left);
+                        })
+                        .on('mouseenter', function(e) {
+                            window.console.log("ENTER");
+                        })
+                        .on('mouseout', function(e) {
+                            window.console.log("OUT");
+                        });
+            });
+
+            function calculeMedisions() {
+                var progressPixel = parseFloat(_PROGRESS_BAR_WIDTH * (_PLAYER.status.currentTime / _DURATION)).toFixed(2),
+                        progressPercent = parseFloat(100 * (_PLAYER.status.currentTime / _DURATION)).toFixed(2);
+
+                document.getElementById("seek").style.marginLeft = progressPixel + "px";
+                document.getElementById("progressBarContent").style.width = progressPercent + "%";
+            }
+
+            function jumpTime(position) {
+                var positionPercent = parseFloat(100 * (position / _PROGRESS_BAR_WIDTH)).toFixed(2);
+
+                document.getElementById("progressBarContent").style.width = positionPercent + "%";
+                document.getElementById("seek").style.marginLeft = position + "px";
+                $("#jquery_jplayer_1").jPlayer("playHead", positionPercent);
+            }
+
+            function resetPlayer() {
+                document.getElementById("progressBarContent").style.width = "0%";
+                document.getElementById("seek").style.marginLeft = 0;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <nav class="navbar-form navbar-left" role="search">
+                <span class="label label-default">
+                    Copy link vídeo and submit: 
+                </span>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </nav>
+
+            <div id="jquery_jplayer_1"></div>
+
+            <div id="jp_container_1">
+                <span class="glyphicon glyphicon-play jp-play"></span>
+                <span class="glyphicon glyphicon-pause jp-pause"></span>
+            </div>
+
+            <div id="progressBar" class="progress">
+                <div id="progressBarContent" class="progress-bar jp-seek-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                    <div id="seek"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

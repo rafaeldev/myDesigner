@@ -1,0 +1,31 @@
+/* line 8, C:\Users\Eu\Documents\NetBeansProjects\myDesigner\public_html\less\less.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Eu\/Documents\/NetBeansProjects\/myDesigner\/public_html\/less\/less\.less}line{font-family:\000038}}
+#header {
+  color: #4d926f;
+}
+/* line 12, C:\Users\Eu\Documents\NetBeansProjects\myDesigner\public_html\less\less.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Eu\/Documents\/NetBeansProjects\/myDesigner\/public_html\/less\/less\.less}line{font-family:\0000312}}
+h2 {
+  color: #4d926f;
+}
+/* line 17, C:\Users\Eu\Documents\NetBeansProjects\myDesigner\public_html\less\less.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Eu\/Documents\/NetBeansProjects\/myDesigner\/public_html\/less\/less\.less}line{font-family:\0000317}}
+#container > a {
+  color: #ff0000;
+  text-decoration: none;
+  padding: .2em;
+  -webkit-transition: all linear 0.78563689 s;
+  -moz-transition: all linear 0.78563689 s;
+  -ms-transition: all linear 0.78563689 s;
+  transition: all linear 0.78563689 s;
+  border: #e33be7 solid 1px;
+}
+/* line 25, C:\Users\Eu\Documents\NetBeansProjects\myDesigner\public_html\less\less.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Eu\/Documents\/NetBeansProjects\/myDesigner\/public_html\/less\/less\.less}line{font-family:\0000325}}
+#container > a:hover {
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}

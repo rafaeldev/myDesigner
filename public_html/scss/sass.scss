@@ -1,0 +1,130 @@
+@import "_constants.scss";
+@import "_functions.scss";
+
+/*
+    Examples Site
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+html {
+    position: absolute;
+    height: 100%;
+    padding: 0 .3em;
+    position: fixed;
+
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        height: 1em;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    &:after {
+        top: auto;
+        bottom: 0;
+    }
+
+    &:before {
+        $equal-stops: #1abc9c #2ecc71 #3498db #9b59b6 #34495e #f1c40f #e67e22 #e74c3c #ecf0f1 #95a5a6;
+
+        // Equal stops
+        // background: stripes($equal-stops, $direction);
+
+        // Random stops 
+        background: stripes($equal-stops, 90deg, $random: true);
+    }
+
+    &:after {
+        $custom-stops: #1abc9c 10%, #2ecc71 12.5%, #3498db 28%, #9b59b6 35%, #34495e 60%, #f1c40f 69%, #e67e22 83%, #e74c3c 88%, #ecf0f1 96%, #95a5a6 100%;
+
+        // Custom stops
+        background: stripes($custom-stops, 90deg);
+    }
+}
+
+.box {
+    @include border-radius (10px);
+    border: 1px solid black;
+}
+
+.message {
+    text-decoration: none;
+    display: inline-block;
+    border : 1px solid #ccc;
+    padding : 10px;
+    color : #333;
+    
+    transition: all .3s linear;
+        
+    &:hover {
+        color: #FFF;
+        cursor: pointer;
+        background-color: darken(#ccc, 25%);
+    }
+}
+
+.success {
+    @extend .message;
+    border-color : green;
+}
+
+.error {
+    @extend .message;
+    border-color : red;
+}
+
+.warning { 
+    @extend .message;
+    border-color : yellow;
+}
+
+#buttons, #container, #subMain {
+    display: block;
+    float: left;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+h1 {
+    color: $myColor;
+}
+
+article[role="main"] {
+    float: left;
+    width: 600px / 960px * 100%;
+}
+
+aside[role="complimentary"] {
+    float: right;
+    width: 300px / 960px * 100%;
+    border: solid 1px;
+    border-color: #FF137C;
+    padding: 1em;
+
+    > ul {
+        > li {
+            list-style: none;
+            margin-left: 1em;
+        }
+    }
+    
+    a {
+        text-decoration: none;
+    }
+}

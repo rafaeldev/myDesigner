@@ -1,0 +1,48 @@
+.square {
+    color: #999;
+    margin: .3em;
+}
+
+.square_12 {
+    width: 320px;
+    height: 160px;
+}
+
+.square_8 {
+    width: 160px;
+    height: 160px;
+}
+
+.square_12:before { 
+    content: "G" 
+}
+
+.square_8:before { 
+    content: "M" 
+}
+
+.square_4:before { 
+    content: "P" 
+}
+
+.square_4 {
+    width: 80px;
+    height: 80px;
+}
+
+.landscape.square_12 {
+    background-image: url(../image/landscape.jpg);
+    background-repeat: no-repeat;
+}
+
+.yellow {
+    background-color: #FFFF00;
+}
+
+.red {
+    background-color: #FF0000;
+}
+
+.blue {
+    background-color: #0000FF;
+}

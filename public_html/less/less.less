@@ -1,0 +1,30 @@
+@import "_contants.less";
+@import "_functions.less";
+
+@color: #4D926F;
+@red: #FF0000;
+.generateRandomColor(); 
+
+#header {
+    color: @color;
+}
+
+h2 {
+    color: @color;
+}
+
+#container {
+    > a {
+        color: @red;
+        text-decoration: none;
+        padding: .2em;
+        .transition();
+        
+        border: @ramColor solid 1px;
+
+        &:hover { 
+            cursor: pointer;
+            .arredonda();
+        }
+    }
+}

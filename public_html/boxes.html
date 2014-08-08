@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            
+            #blackboard {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background-color: #002200;
+                border: #3333AA solid 5px;
+            }
+            
+            #options {
+                color: #000000;
+                padding: 1em 0;
+            }
+            
+            #trick {
+                color: #FFFFFF;
+            }
+            
+            .chalk {
+                position: fixed;
+                border: #FFFFFF solid 2px;
+            }
+            
+            div.square {
+                
+            }
+            
+            div.circle {
+                -moz-border-radius: 50px;
+                -webkit-border-radius: 50px;
+                border-radius: 50px;
+            }
+            
+            div.triangle {
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                border-bottom: 100px solid red;
+            }
+            
+            .ui-widget-content {
+                background-color: #000099;
+                z-index: 1000;
+            }
+            
+            div.close {
+                background-color: #000077;
+            }
+        </style>
+        <script src="js/libs/jquery_2.0.3.js" type="text/javascript"></script>
+        <script src="js/libs/jquery-ui.js" type="text/javascript"></script>
+        <script src="js/arrow2.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="options">
+            <input type="radio" name="designMode" value="square" checked="true"> Square
+            <input type="radio" name="designMode" value="circle"> Cicle
+            <input type="radio" name="designMode" value="triangle"> Triangle
+        </div>
+        <div id="blackboard">
+            <ol id="trick">
+                <li>Click</li>
+                <li>Move mouse</li>
+                <li>Click again</li>
+            </ol>
+            <canvas id="mcanvas"></canvas>
+        </div>
+        <script>
+            var FIRST_X,
+                FIRST_Y,
+                mcanvas = document.getElementById("mcanvas"),
+                ctx = mcanvas.getContext("2d"),
+                // arrow start
+                xc = 10,
+                yc = 10,
+                // arrow tip
+                xf = 180,
+                yf = 90;
+
+            ctx.save();
+            ctx.fillStyle = "rgb(0,0,0)";
+            ctx.lineWidth = 2;
+            
+            drawArrow(ctx, xc, yc, xf, yf, 3, 1, (Math.PI / 6), 10);
+
+            $('#blackboard').on('click', function(evt) {
+                var className = undefined,
+                    design = undefined;
+
+                if (FIRST_X && FIRST_Y) {
+                    FIRST_X = undefined;
+                    FIRST_Y = undefined;
+
+                    $('#new').removeAttr("id").draggable().addClass("close");
+
+                    return false;
+                }
+
+                FIRST_X = evt.pageX;
+                FIRST_Y = evt.pageY;
+
+                design = $('<div></div>', {
+                                        'id': "new",
+                                        'class': "chalk"
+                                    }).css({
+                                        'top': FIRST_Y, 
+                                        'left': FIRST_X
+                                    });
+
+                switch($('input[name="designMode"]:checked').val()) {
+                    case "square":
+                        className = "square";
+                        break;
+                    case "circle":
+                        className = "circle";
+                        break;
+                    case "triangle":
+                        className = "triangle";
+                        break;
+                }
+
+                design.addClass(className);
+
+                $(this).append(design)
+
+            });
+
+            $('#blackboard').on('mousemove', function(evt) {
+                if (FIRST_X && FIRST_Y) {
+                    $('#new').css({
+                                'width': evt.pageX - FIRST_X, 
+                                'height': evt.pageY - FIRST_Y
+                               });
+                }
+            });
+
+            $(document).on('keydown', function(evt) {
+                var key = evt.keyCode;
+                if (key == 27) {
+                    $('#new').remove();
+                    FIRST_X = undefined;
+                    FIRST_Y = undefined;
+                }
+            });
+        </script>
+    </body>
+</html>

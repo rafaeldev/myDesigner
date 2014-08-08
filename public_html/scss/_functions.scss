@@ -1,0 +1,84 @@
+@function rand($min, $max) {
+    @return random($max - $min) + $min;
+}
+
+@function _stripes-random-stops($colors) {
+    @if length(nth($colors, 1)) > 1 {
+        @return _stripes-custom-stops($colors);
+    }
+
+    $nb: length($colors);
+    $gradients: ();
+    $variation: 10;
+    $median: 100 / $nb;
+
+    @for $i from 1 to $nb {
+        $stop: $median * $i; 
+        $random: rand($stop - $variation, $stop + $variation) * 1%;
+        $gradients: append($gradients, nth($colors, $i) $random, comma);
+        @if $i < length($colors) {
+            $gradients: append($gradients, nth(nth($colors, $i + 1), 1) $random);
+        } 
+    }
+
+    @return $gradients;
+}
+
+@function _stripes-custom-stops($colors) {
+    $gradients: ();
+
+    @for $i from 1 to length($colors) {
+        @if length(nth($colors, $i)) > 1 {
+            $color: nth(nth($colors, $i), 1);
+            $stop:  nth(nth($colors, $i), 2);
+
+            $gradients: append($gradients, $color $stop, comma);
+            @if $i < length($colors) {
+                $gradients: append($gradients, nth(nth($colors, $i + 1), 1) $stop);
+            }
+        }
+
+        @else {
+            @warn '`#{nth($colors, $i)}` skipped because it is only one item long while it should be 2: (color, color-stop).';
+        }
+    }
+
+    @return $gradients;
+}
+
+@function _stripes-equal-stops($colors) {
+    $gradients: ();
+    $stops: 100% / length($colors); 
+
+    // Loop through colors
+    @for $i from 1 to length($colors) {
+        $gradients: append($gradients, nth($colors, $i) $i * $stops, comma);
+        @if $i < length($colors) {
+            $gradients: append($gradients, nth($colors, $i + 1) $i * $stops);
+        }
+    }
+
+    // Return gradient
+    @return $gradients;
+}
+
+@function stripes($colors, $direction: 90deg, $random: false) {
+    // If lonely color
+    @if length($colors) == 1 { @return $colors; }
+
+    // Else
+    $type: if($random, 'random', if(length(nth($colors, 1)) > 1, 'custom', 'equal'));
+    @return linear-gradient($direction, call('_stripes-#{$type}-stops', $colors));
+}
+
+@function set-button-text-color($color) {
+    @if (lightness($color) > 40) {
+        @return black;
+    } @else {
+        @return white;
+    }
+}
+
+@function hover-button($colot) {
+    
+}
