@@ -1,4 +1,4 @@
 myDesigner
 ==========
 
-First test as web deseigner
+First test as web designer
